@@ -18,7 +18,7 @@ public class Slope {
      * - down >= number of rows of the matrix or down < 1
      */
     public static int downTheSlope ( char [][] slopeMap , int right , int down ) {
-        int fin =slopeMap.length;
+     /*   int fin =slopeMap.length;
         int countArbol=0;
         int a=0,b=0;
         for (int i=0;i<fin;i++){
@@ -45,10 +45,10 @@ public class Slope {
 
 
 
-        return 0;
+  */      return 0;
         }
 
-
+/*
     @Override
     public int hashCode() {
         return super.hashCode();
@@ -58,7 +58,9 @@ public class Slope {
     public boolean equals(Object o) {
         if (this==o) return true;
         if (o==null|| getClass()!= o.getClass()) return false;
-    }
+
+
+    }*/
 
     public static void main(String[] args) {
         char[][] map = {
