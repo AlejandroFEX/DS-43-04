@@ -56,16 +56,16 @@ class SlopeTest {
         assertEquals( 6, Slopes.downTheSlope(miniMap,  4,  3));
 
         assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(nonSquareMap1, 1, 1));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(nonSquareMap2, 1, 1));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(invalidCharacter, 1, 1));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 11, 1));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 1, 11));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, -1, 1));
-//        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 1, 0));
-    }
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(nonSquareMap2, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(invalidCharacter, 1, 1));
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 11, 1));
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 1, 11));
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, -1, 1));
+        assertThrows(IllegalArgumentException.class, () -> Slopes.downTheSlope(map, 1, 0));
+   }
 
-   // @Test
-  /*  void jumpTheSlope() {
+    @Test
+   void jumpTheSlope() {
         assertEquals(2, Slopes.jumpTheSlope(map, 1, 1));
         assertEquals(7, Slopes.jumpTheSlope(map, 3, 1));
         assertEquals(3, Slopes.jumpTheSlope(map, 5, 1));
@@ -84,5 +84,5 @@ class SlopeTest {
         assertThrows(IllegalArgumentException.class, () -> Slopes.jumpTheSlope(map, 1, 11));
         assertThrows(IllegalArgumentException.class, () -> Slopes.jumpTheSlope(map, -1, 1));
         assertThrows(IllegalArgumentException.class, () -> Slopes.jumpTheSlope(map, 1, 0));
-    }*/
+    }
 }
