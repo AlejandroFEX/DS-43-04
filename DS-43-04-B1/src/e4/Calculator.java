@@ -107,9 +107,7 @@ public class Calculator {
             dato1 =(Float.parseFloat(entrada.get(i+1)));
             solucion=calculator.performOperation(solucion,dato1);
         }
-
        entrada.clear();
-
         return solucion;
     }
     /**
@@ -123,7 +121,6 @@ public class Calculator {
     public String toString () {
         StringBuilder salida = new StringBuilder();
         salida.append("[STATE:");
-
         if (entrada.size()==0)
             return "[STATE:]";
         salida.append("[").append(entrada.get(0)).append("]");
@@ -134,7 +131,6 @@ public class Calculator {
              salida.append(entrada.get(i+1));
         }
         salida.append("]");
-        //System.out.println(salida.toString());
         return salida.toString();
     }
 //---------------------------------------------------------------------------
