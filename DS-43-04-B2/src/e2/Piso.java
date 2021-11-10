@@ -1,8 +1,11 @@
 package e2;
 import java.util.*;
 
-public class Piso {
-
+public class Piso implements Comparable<Piso> {
+    public enum Tipo{
+        REF, PRECIOMA,PRECIOME,COD, TAMAMA,TAMAME,PRECIOSINGARA
+    }
+    Tipo x = null;
     public int ref;
     String precio;// string para dividir los precios
     int tamano;
@@ -72,7 +75,6 @@ public class Piso {
 
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -104,29 +106,32 @@ public class Piso {
         return sb.toString();
     }
 
-    public void sort(Integer x) {
-        if ((x == null)) {
-            Collections.sort(pisos, new Sortbyref());
-        } else if (x == 1)
-            Collections.sort(pisos, new Sortbyprecioma());
-        else if (x == 2)
-            Collections.sort(pisos, new Sortbypreciome());
-        else if (x == 3)
-            Collections.sort(pisos, new Sortbycod());
-        else if (x == 4)
-            Collections.sort(pisos, new Sortbytamama());
-        else if (x == 5)
-            Collections.sort(pisos, new Sortbytamame());
-        else if (x==6)
-            Collections.sort(pisos,new Sortbypreciosingarajema());
+
+    public void ord(Tipo o) {
+        x = o;
     }
 
 
-    class Sortbyref implements Comparator<Piso> {
+    public void sort() {
+        if ((x == Tipo.REF)||x==null)
+            Collections.sort(pisos);
+        else if (x == Tipo.PRECIOMA)
+            Collections.sort(pisos, new Sortbyprecioma());
+        else if (x == Tipo.PRECIOME)
+            Collections.sort(pisos, new Sortbypreciome());
+        else if (x == Tipo.COD)
+            Collections.sort(pisos, new Sortbycod());
+        else if (x == Tipo.TAMAMA)
+            Collections.sort(pisos, new Sortbytamama());
+        else if (x == Tipo.TAMAME)
+            Collections.sort(pisos, new Sortbytamame());
+        else if (x==Tipo.PRECIOSINGARA)
+            Collections.sort(pisos,new Sortbypreciosingarajema());
+    }
 
-        public int compare(Piso o1, Piso o2) {
-            return o1.ref - o2.ref;
-        }
+    @Override
+    public int compareTo(Piso o) {
+        return ref -o.ref;
     }
 
     class Sortbycod implements Comparator<Piso> {
@@ -134,7 +139,6 @@ public class Piso {
             return o1.codigoP - o2.codigoP;
         }
     }
-
     class Sortbytamama implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
             return o2.tamano - o1.tamano;
