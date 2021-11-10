@@ -16,17 +16,6 @@ public class Piso implements Comparable<Piso> {
         return ref;
     }
 
-    public String getPrecio() {
-        return precio;
-    }
-
-    public int getTamano(int i) {
-        return tamano;
-    }
-
-    public int getCodigoP() {
-        return codigoP;
-    }
 
     public void setRef(int ref) {
         this.ref = ref;
@@ -64,15 +53,6 @@ public class Piso implements Comparable<Piso> {
         if (index > pisos.size())
             return null;
         return pisos.get(index);
-    }
-
-    public void imprimir() {
-        StringBuilder sb = new StringBuilder();
-        for (Piso piso : pisos) {
-            sb.append(piso).append("\n");
-        }
-        System.out.println(sb.toString());
-
     }
 
     @Override
@@ -116,17 +96,17 @@ public class Piso implements Comparable<Piso> {
         if ((x == Tipo.REF)||x==null)
             Collections.sort(pisos);
         else if (x == Tipo.PRECIOMA)
-            Collections.sort(pisos, new Sortbyprecioma());
+            pisos.sort(new SortByPrecioMayor());
         else if (x == Tipo.PRECIOME)
-            Collections.sort(pisos, new Sortbypreciome());
+            pisos.sort(new SortByPrecioMenor());
         else if (x == Tipo.COD)
-            Collections.sort(pisos, new Sortbycod());
+            pisos.sort(new SortByCodigo());
         else if (x == Tipo.TAMAMA)
-            Collections.sort(pisos, new Sortbytamama());
+            pisos.sort(new SortByTamanoMayor());
         else if (x == Tipo.TAMAME)
-            Collections.sort(pisos, new Sortbytamame());
+            pisos.sort(new SortByTamame());
         else if (x==Tipo.PRECIOSINGARA)
-            Collections.sort(pisos,new Sortbypreciosingarajema());
+            pisos.sort(new SortByPrecioSinGaraje());
     }
 
     @Override
@@ -134,59 +114,59 @@ public class Piso implements Comparable<Piso> {
         return ref -o.ref;
     }
 
-    class Sortbycod implements Comparator<Piso> {
+    static class SortByCodigo implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
             return o1.codigoP - o2.codigoP;
         }
     }
-    class Sortbytamama implements Comparator<Piso> {
+    static class SortByTamanoMayor implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
             return o2.tamano - o1.tamano;
         }
     }
 
-    class Sortbytamame implements Comparator<Piso> {
+    static class SortByTamame implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
             return o1.tamano - o2.tamano;
         }
     }
 
-    class Sortbypreciome implements Comparator<Piso> {
+    static class SortByPrecioMenor implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
-            String a[] = o1.precio.split("\\s+");
-            String b[] = o2.precio.split("\\s+");
+            String[] a = o1.precio.split("\\s+");
+            String[] b = o2.precio.split("\\s+");
             int x = 0;
-            for (int i = 0; i < a.length; i++) {
-                x = x + Integer.parseInt(a[i]);
+            for (String value : a) {
+                x = x + Integer.parseInt(value);
             }
             int y = 0;
-            for (int i = 0; i < b.length; i++) {
-                y = y + Integer.parseInt(b[i]);
+            for (String s : b) {
+                y = y + Integer.parseInt(s);
             }
             return x - y;
         }
     }
 
-    class Sortbyprecioma implements Comparator<Piso> {
+    static class SortByPrecioMayor implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
-            String a[] = o1.precio.split("\\s+");
-            String b[] = o2.precio.split("\\s+");
+            String[] a = o1.precio.split("\\s+");
+            String[] b = o2.precio.split("\\s+");
             int x = 0;
-            for (int i = 0; i < a.length; i++) {
-                x = x + Integer.parseInt(a[i]);
+            for (String s : a) {
+                x = x + Integer.parseInt(s);
             }
             int y = 0;
-            for (int i = 0; i < b.length; i++) {
-                y = y + Integer.parseInt(b[i]);
+            for (String s : b) {
+                y = y + Integer.parseInt(s);
             }
             return y - x;
         }
     }
 
-    class Sortbypreciosingarajema implements Comparator<Piso> {
+    static class SortByPrecioSinGaraje implements Comparator<Piso> {
         public int compare(Piso o1, Piso o2) {
-            String a[] = o1.precio.split("\\s+");
-            String b[] = o2.precio.split("\\s+");
+            String[] a = o1.precio.split("\\s+");
+            String[] b = o2.precio.split("\\s+");
             return Integer.parseInt(b[0])-Integer.parseInt(a[0]);
         }
     }
